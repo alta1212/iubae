@@ -1,0 +1,80 @@
+ <style>
+  css-doodle {
+    --color: @p(#51eaea, #fffde1, #ff9d76, #FB3569);
+    --rule: (
+      :doodle {
+        @grid: 30x1 / 18vmin;
+        --deg: @p(-180deg, 180deg);
+      }
+      :container {
+        perspective: 30vmin;
+      }
+      :after, :before {
+        content: '';
+        background: var(--color); 
+        @place-cell: @r(100%) @r(100%);
+        @size: @r(6px);
+        @shape: heart;
+      }
+    
+      @place-cell: center;
+      @size: 100%;
+    
+      box-shadow: @m2(0 0 50px var(--color));
+      background: @m100(
+        radial-gradient(var(--color) 50%, transparent 0) 
+        @r(-20%, 120%) @r(-20%, 100%) / 1px 1px
+        no-repeat
+      );
+    
+      will-change: transform, opacity;
+      animation: scale-up 12s linear infinite;
+      animation-delay: calc(-12s / @I * @i);
+
+      @keyframes scale-up {
+        0%, 95.01%, 100% {
+          transform: translateZ(0) rotate(0);
+          opacity: 0;
+        }
+        10% { 
+          opacity: 1; 
+        }
+        95% {
+          transform: 
+            translateZ(35vmin) rotateZ(@var(--deg));
+        }
+      }
+    )
+  }
+</style>
+
+
+<div *ngIf="(!load)">
+  <css-doodle use="var(--rule)"></css-doodle>
+    <div >
+        <label for="exampleFormControlInput1" style="position: relative"  class="form-label">Bae ơi em chưa đặt pass nè </label>
+        <input required #pass type="password" style="position: relative" class="form-control" id="exampleFormControlInput1" placeholder="Nhập mật khẩu zô đây  ">
+        <button type="submit"  (click)="setPassword(pass.value)"   style="position: relative" class="btn btn-primary">Gửi</button>
+
+    </div>
+</div>
+
+
+
+<div   *ngIf="(load)"   class="flex-container">
+
+  <div class="unit">
+    <div class="heart">
+      <div class="heart-piece-0"></div>
+      <div class="heart-piece-1"></div>
+      <div class="heart-piece-2"></div>
+      <div class="heart-piece-3"></div>
+      <div class="heart-piece-4"></div>
+      <div class="heart-piece-5"></div>
+      <div class="heart-piece-6"></div>
+      <div class="heart-piece-7"></div>
+      <div class="heart-piece-8"></div>
+    </div>
+    <p>Is that you bae 😗</p>
+  </div>
+</div> 
