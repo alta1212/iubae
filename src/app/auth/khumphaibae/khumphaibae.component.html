@@ -1,6 +1,13 @@
 
 <div class="base io"> 
     <h1 class="io">403</h1>
+    <div >
+      <label for="exampleFormControlInput1" style="position: relative"  class="form-label">Nhập mật khẩu để thêm thiết bị mới </label>
+      <input required #pass type="password" style="position: relative" class="form-control" id="exampleFormControlInput1" placeholder="Nhập mật khẩu zô đây  ">
+      <button type="submit"  (click)="addnew(pass.value)"   style="position: relative" class="btn btn-primary">Gửi</button>
+
+  </div>
     <h2>Access forbidden</h2>
     <h5>(Khum phải bae)</h5>
+   
   </div>
